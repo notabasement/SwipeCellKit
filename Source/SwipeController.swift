@@ -367,6 +367,13 @@ extension SwipeController: UIGestureRecognizerDelegate {
         
         return true
     }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        if let otherPan = otherGestureRecognizer as? UIScreenEdgePanGestureRecognizer, otherPan.edges == .left {
+            return true
+        }
+        return false
+    }
 }
 
 extension SwipeController: SwipeActionsViewDelegate {
